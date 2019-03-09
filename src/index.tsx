@@ -7,9 +7,10 @@ import { OptionContext, allOptions } from './options'
 export { default as Avatar, AvatarStyle } from './avatar'
 export { Option, OptionContext, allOptions } from './options'
 
-import {default as PieceComponent} from './avatar/piece';
+import { default as PieceComponent } from './avatar/piece'
 
 export interface Props {
+  avatarBackground?: string
   avatarStyle: string
   style?: React.CSSProperties
   topType?: string
@@ -25,9 +26,9 @@ export interface Props {
   eyebrowType?: string
   mouthType?: string
   skinColor?: string
-  pieceType?:string
-  pieceSize?:string
-  viewBox?:string
+  pieceType?: string
+  pieceSize?: string
+  viewBox?: string
 }
 
 export default class AvatarComponent extends React.Component<Props> {
@@ -36,24 +37,24 @@ export default class AvatarComponent extends React.Component<Props> {
   }
   private optionContext: OptionContext = new OptionContext(allOptions)
 
-  getChildContext () {
+  getChildContext() {
     return { optionContext: this.optionContext }
   }
 
-  componentWillMount () {
+  componentWillMount() {
     this.updateOptionContext(this.props)
   }
 
-  componentWillReceiveProps (nextProps: Props) {
+  componentWillReceiveProps(nextProps: Props) {
     this.updateOptionContext(nextProps)
   }
 
-  render () {
-    const { avatarStyle, style } = this.props
-    return <Avatar avatarStyle={avatarStyle as AvatarStyle} style={style} />
+  render() {
+    const { avatarStyle, style, avatarBackground } = this.props
+    return <Avatar avatarStyle={avatarStyle as AvatarStyle} style={style} avatarBackground={avatarBackground} />
   }
 
-  private updateOptionContext (props: Props) {
+  private updateOptionContext(props: Props) {
     const data: { [index: string]: string } = {}
     for (const option of allOptions) {
       const value = props[option.key]
@@ -72,24 +73,24 @@ export class Piece extends React.Component<Props> {
   }
   private optionContext: OptionContext = new OptionContext(allOptions)
 
-  getChildContext () {
+  getChildContext() {
     return { optionContext: this.optionContext }
   }
 
-  componentWillMount () {
+  componentWillMount() {
     this.updateOptionContext(this.props)
   }
 
-  componentWillReceiveProps (nextProps: Props) {
+  componentWillReceiveProps(nextProps: Props) {
     this.updateOptionContext(nextProps)
   }
 
-  render () {
+  render() {
     const { avatarStyle, style, pieceType, pieceSize, viewBox } = this.props
-    return <PieceComponent avatarStyle={avatarStyle as AvatarStyle} style={style} pieceType={pieceType} pieceSize={pieceSize} viewBox={viewBox}/>
+    return <PieceComponent avatarStyle={avatarStyle as AvatarStyle} style={style} pieceType={pieceType} pieceSize={pieceSize} viewBox={viewBox} />
   }
 
-  private updateOptionContext (props: Props) {
+  private updateOptionContext(props: Props) {
     const data: { [index: string]: string } = {}
     for (const option of allOptions) {
       const value = props[option.key]
