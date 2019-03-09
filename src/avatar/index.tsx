@@ -18,19 +18,22 @@ export interface Props {
 }
 
 export default class Avatar extends React.Component<Props> {
-  render () {
-    const { avatarStyle, avatarBackground } = this.props
+  render() {
+    const {
+      avatarStyle,
+      avatarBackground = '#65C9FF',
+      style,
+    } = this.props
     const circle = avatarStyle === AvatarStyle.Circle
     return (
       <svg
-        style={this.props.style}
+        style={style}
         width='264px'
         height='280px'
         viewBox='0 0 264 280'
         version='1.1'
         xmlns='http://www.w3.org/2000/svg'
         xmlnsXlink='http://www.w3.org/1999/xlink'>
-        <desc>Created with getavataaars.com</desc>
         <defs>
           <circle id='path-1' cx='120' cy='120' r='120' />
           <path
@@ -69,7 +72,7 @@ export default class Avatar extends React.Component<Props> {
                   <g
                     id='Color/Palette/Blue-01'
                     mask='url(#mask-2)'
-                    fill={avatarBackground ? avatarBackground : '#65C9FF'}>
+                    fill={avatarBackground}>
                     <rect id='🖍Color' x='0' y='0' width='240' height='240' />
                   </g>
                 </g>

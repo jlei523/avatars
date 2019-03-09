@@ -1,3 +1,8 @@
+# TGRX FORK
+
+- Removes "getavataaars.com" description from all avatars
+- Merges PRs: #5, #15, #16
+
 # React component for Avataaars
 
 The core React component for [Avataaars Generator](https://getavataaars.com/) developed by [Fang-Pen Lin](https://twitter.com/fangpenlin), based on the Sketch library [Avataaars](https://avataaars.com/) designed by [Pablo Stanley](https://twitter.com/pablostanley). 
